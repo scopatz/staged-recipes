@@ -1,0 +1,44 @@
+{% set name = "pyre2" %}
+{% set version = "1.0.5" %}
+{% set sha256 = "bba85a87e3b7a3ecbc08ee889008ba127a698928f6bc346bcfa2a34a2ce62058" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://github.com/facebook/pyre2/archive/v{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - toolchain
+    - python
+    - setuptools
+    - re2
+  run:
+    - python
+    - re2
+
+test:
+  requires:
+    - nose
+  imports:
+    - re2
+  commands:
+    - nosetests tests
+
+about:
+  home: https://github.com/facebook/pyre2
+  license: BSD 3-clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'Python wrapper for RE2'
+
+extra:
+  recipe-maintainers:
+    - scopatz
