@@ -1,0 +1,51 @@
+{% set name = "vscode" %}
+{% set version = "1.35.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/microsoft/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 6a5bab018f35727897140d410a3d0ebaa640d6c75ee8053a1cd5e02ece5714e9
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - python <3
+    - git
+    - make  # [unix]
+    - pkg-config  # [linux]
+  host:
+    - nodejs
+    - yarn
+    - xorg-libx11  # [linux]
+    - libxkbfile  # [linux]
+    - libsecret  #[linux]
+
+test:
+  commands:
+    - vscode --help
+
+about:
+  home: https://code.visualstudio.com/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: 'Visual Studio Code'
+  description: |
+    Visual Studio Code combines the simplicity of a code editor with what
+    developers need for their core edit-build-debug cycle. It provides
+    comprehensive code editing, navigation, and understanding support
+    along with lightweight debugging, a rich extensibility model, and
+    lightweight integration with existing tools.
+  doc_url: https://code.visualstudio.com/
+  dev_url: https://github.com/microsoft/vscode
+
+extra:
+  recipe-maintainers:
+    - scopatz
