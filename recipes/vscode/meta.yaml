@@ -17,6 +17,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - python <3
+    - pip
     - git
     - make  # [unix]
     - pkg-config  # [linux]
