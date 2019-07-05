@@ -18,6 +18,14 @@ requirements:
     - {{ compiler('c') }}
     - make
     - autoconf
+  host:
+    - libical
+    - glib
+    - dbus
+  run:
+    - libical
+    - glib
+    - dbus
 
 test:
   commands:
