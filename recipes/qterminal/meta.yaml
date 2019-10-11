@@ -18,12 +18,24 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - make
-    - cmake
-    - lxqt-build-tools
+    - cmake >=3.1.0
+    - {{ cdt('mesa-libegl') }}
+    - {{ cdt('mesa-libegl-devel') }}
   host:
+    - lxqt-build-tools
     - qt >=5.2
+    - freeglut
+    #- mesa-libegl-cos6-x86_64
+    #- mesa-libegl-devel-cos6-x86_64
+    #- mesalib
+    #- libglu
+    #- xorg-libx11
+    #- xorg-libxext
+    #- xorg-glproto
   run:
     - qt >=5.2
+    #- mesalib
+    #- libglu
 
 test:
   commands:
