@@ -1,0 +1,43 @@
+{% set name = "qterminal" %}
+{% set version = "0.14.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/lxqt/qterminal/releases/download/{{ version }}/qterminal-{{ version }}.tar.xz
+  sha256: e018ece0bd38124a2879a6fbb76dd6b9d70ae2b231845650ad363eeca756fe31
+
+build:
+  number: 0
+  skip: true  # [not linux]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+    - cmake
+    - lxqt-build-tools
+  host:
+    - qt >=5.2
+  run:
+    - qt >=5.2
+
+test:
+  commands:
+    - qterminal --help
+
+about:
+  home: http://lxqt.org
+  license: GPLv2.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: 'Lightweight Qt terminal emulator based on QTermWidget'
+  doc_url: http://lxqt.org
+  dev_url: https://github.com/lxqt/qterminal
+
+extra:
+  recipe-maintainers:
+    - scopatz
