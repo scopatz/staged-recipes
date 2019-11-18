@@ -1,0 +1,44 @@
+{% set name = "perl-parent" %}
+{% set version = "0.237" %}
+{% set sha256 = "1089d9648565c1d1e655fa4cb603272d3126747b7b5f836ffee685e27e53caae" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: parent-0.237.tar.gz
+  url: https://cpan.metacpan.org/authors/id/C/CO/CORION/parent-0.237.tar.gz
+  sha256: {{ sha256 }}
+
+# If this is a new build for the same version, increment the build
+# number. If you do not include this key, it defaults to 0.
+build:
+  number: 0
+
+requirements:
+  build:
+    - perl
+    - perl-extutils-makemaker
+    #- perl-test-more
+
+  run:
+    - perl
+    #- perl-test-more
+
+test:
+  # Perl 'use' tests
+  imports:
+    - parent
+
+  # You can also put a file called run_test.pl (or run_test.py) in the recipe
+  # that will be run at test time.
+
+about:
+  home: http://metacpan.org/pod/parent
+  license: perl_5
+  summary: 'Establish an ISA relationship with base classes at compile time'
+
+# See
+# https://docs.conda.io/projects/conda-build for
+# more information about meta.yaml
