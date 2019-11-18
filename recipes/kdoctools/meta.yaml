@@ -1,0 +1,47 @@
+{% set name = "kdoctools" %}
+{% set version = "5.64.0" %}
+{% set major_minor = ".".join(version.split(".")[:2]) %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kdoctools-{{ version }}.tar.xz
+  sha256: 3e669c9bdf8822c262d834a9fbe9250ffdc91ea49c916b2c16ac8483b62f8fce
+
+build:
+  number: 0
+  skip: true  # [not linux]
+  run_exports:
+    - {{ pin_subpackage('kdoctools', max_pin='x.x') }}
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake
+    - make
+  host:
+    - extra-cmake-modules
+    - qt
+    - karchive
+    - ki18n
+
+test:
+  commands:
+    - test -f ${PREFIX}/lib/libKF5DocTools.so
+
+about:
+  home: https://api.kde.org/frameworks/kdoctools/html/index.html
+  license: GPL-v2
+  license_family: GPL
+  license_file: COPYING
+  summary: 'Create documentation from DocBook'
+  description: |
+    Provides tools to generate documentation in various format from DocBook files.
+  dev_url: https://cgit.kde.org/kdoctools.git/tree
+
+extra:
+  recipe-maintainers:
+    - scopatz
