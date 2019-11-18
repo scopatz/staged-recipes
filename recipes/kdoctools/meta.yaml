@@ -27,6 +27,9 @@ requirements:
     - qt
     - karchive
     - ki18n
+    - libxslt
+    - docbook-xml
+    - perl-uri
 
 test:
   commands:
