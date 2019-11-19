@@ -7,42 +7,39 @@ package:
   version: {{ version }}
 
 source:
-  fn: URI-1.76.tar.gz
-  url: https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-1.76.tar.gz
+  fn: URI-{{ version }}.tar.gz
+  url: https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
-# If this is a new build for the same version, increment the build
-# number. If you do not include this key, it defaults to 0.
 build:
   number: 0
 
 requirements:
   build:
-    - perl
-    - perl-parent
-    - perl-data-dumper
-    - perl-constant
-    - perl-extutils-makemaker
-    - perl-exporter
-    - perl-file-temp
-    - perl-test-needs
-    - perl-test
-    - perl-carp
-    - perl-encode
-    - perl-mime-base64
+    - perl >=5
+    #- perl-parent
+    #- perl-data-dumper
+    #- perl-constant
+    #- perl-extutils-makemaker
+    #- perl-exporter
+    #- perl-file-temp
+    #- perl-test-needs
+    #- perl-test
+    #- perl-carp
+    #- perl-encode
+    #- perl-mime-base64
 
   run:
-    - perl
-    - perl-parent
-    - perl-data-dumper
-    - perl-constant
-    - perl-exporter
-    - perl-carp
-    - perl-encode
-    - perl-mime-base64
+    - perl >=5
+    #- perl-parent
+    #- perl-data-dumper
+    #- perl-constant
+    #- perl-exporter
+    #- perl-carp
+    #- perl-encode
+    #- perl-mime-base64
 
 test:
-  # Perl 'use' tests
   imports:
     - URI
     - URI::Escape
