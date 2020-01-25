@@ -1,0 +1,54 @@
+{% set name = "multimc5" %}
+{% set version = "0.6.7" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/MultiMC/MultiMC5/archive/{{ version }}.tar.gz
+  sha256: 3ec38a5f622048ba3926f0e20fb296d646c7848f8313143062b3e2bd273149ae
+
+build:
+  number: 0
+  skip: True  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+    - cmake
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
+    - {{ cdt('libselinux') }}  # [linux]
+    - {{ cdt('libxdamage') }}  # [linux]
+    - {{ cdt('libxxf86vm') }}  # [linux]
+  host:
+    - zlib
+    - qt >=5
+    - openjdk
+    - xorg-libxfixes  # [linux]
+
+test:
+  imports:
+    - multimc --help
+
+about:
+  home: https://multimc.org/
+  license: Apache-2.0
+  license_family: Apache
+  license_file: COPYING.md
+  summary: 'Manage Minecraft instances with ease'
+  description: |
+    MultiMC is a free, open source launcher for Minecraft.
+    It allows you to have multiple, cleanly separated instances
+    of Minecraft (each with their own mods, texture packs, saves, etc)
+    and helps you manage them and their associated options with a simple
+    and powerful interface.
+  doc_url: https://multimc.org/
+  dev_url: https://github.com/MultiMC/MultiMC5
+
+extra:
+  recipe-maintainers:
+    - scopatz
