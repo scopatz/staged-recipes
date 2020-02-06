@@ -19,6 +19,7 @@ requirements:
     - {{ compiler('cxx') }}
     - make
     - cmake
+    #- git
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - {{ cdt('mesa-dri-drivers') }}  # [linux]
     - {{ cdt('libselinux') }}  # [linux]
